@@ -17,7 +17,7 @@ $logedInUsername = $_SESSION['user']['username'];
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
-    <title>221 | User Profile</title>
+    <title> B.B | User Profile</title>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">

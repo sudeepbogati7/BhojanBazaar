@@ -96,7 +96,7 @@ if(isset($_POST['submit']))           //if upload btn is pressed
                 <div class="navbar-header">
                     <a class="navbar-brand" href="index.html">
                         <!-- Logo icon -->
-                        <b><img src="images/221b-2.png" alt="homepage" class="dark-logo" /></b>
+                        <b><img src="images/221b-2.png" width="180" alt="homepage" class="dark-logo" /></b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <!-- <span><img src="images/logo-text.png" alt="homepage" class="dark-logo" /></span> -->

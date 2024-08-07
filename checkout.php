@@ -174,7 +174,7 @@ else{
                     <div class="row">
                         <div class="col-xs-12 col-sm-4 address color-gray">
                             <h5>Address</h5>
-                            <p>221 Bakers street </p>
+                            <p> kathmandu valley, Nepal  </p>
                             <h5>Phone: <a href="tel:+080000012222"> 98******** </a></h5> </div> 
                     </div>
                 </div>

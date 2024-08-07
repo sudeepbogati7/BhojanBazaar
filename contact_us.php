@@ -14,7 +14,7 @@ session_start(); //start temp session until logout/browser closed
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
-    <title>221 | Contact us</title>
+    <title> B.B | Contact us</title>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -178,7 +178,7 @@ session_start(); //start temp session until logout/browser closed
                     <div class="row">
                         <div class="col-xs-12 col-sm-4 address color-gray">
                             <h5>Address</h5>
-                            <p>221 Bakers street </p>
+                            <p> Kathmandu Valley , Nepal  </p>
                             <h5>Phone: <a href="tel:+080000012222"> 98********** </a></h5> </div> 
                     </div>
                 </div>

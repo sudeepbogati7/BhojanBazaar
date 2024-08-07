@@ -65,7 +65,7 @@ if(isset($_POST['submit'] )) //if submit btn is pressed
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
-    <title>221b | Forgot Password</title>
+    <title> B.B | Forgot Password</title>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">

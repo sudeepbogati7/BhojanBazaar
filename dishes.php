@@ -19,7 +19,7 @@ include_once 'product-action.php'; //including controller
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
-    <title>221 | Menu</title>
+    <title> B.B | Menu</title>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -267,7 +267,7 @@ $item_total += ($item["price"]*$item["quantity"]); // calculating current price 
                         <div class="col-xs-12 col-sm-4 address color-gray">
                             <h5>Address</h5>
                             <p> Kathmandu Valley , Nepal  </p>
-                            <h5>Phone: <a href="tel:+080000012222" >98********* </a></h5> </div> 
+                            <h5> Phone: <a href="tel:+080000012222" >98********* </a></h5> </div> 
                     </div>
                 </div>
                 <!-- bottom footer ends -->
