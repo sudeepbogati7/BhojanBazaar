@@ -1,209 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-include("connection/connect.php"); //INCLUDE CONNECTION
-error_reporting(0); // hide undefine index errors
-session_start(); // temp sessions
-if(isset($_POST['submit']))   // if button is submit
+include("../connection/connect.php");
+error_reporting(0);
+session_start();
+
+if(isset($_POST['submit']))
 {
-	$username = $_POST['username'];  //fetch records from login form
-	$password = $_POST['password'];
-	
-	if(!empty($_POST["submit"]))   // if records were not empty
-     {
-	$loginquery ="SELECT * FROM users WHERE username='$username' && password='".$password."'"; //selecting matching records
-	$result=mysqli_query($db, $loginquery); //executing
-	$row=mysqli_fetch_array($result);
-	
-	                        if(is_array($row))  // if matching records in the array & if everything is right
-								{
-                                        $_SESSION["user_id"] = $row['u_id']; // put user id into temp session
-                                        $_SESSION["f_name"] = $row['f_name'] ;
-                                        $_SESSION["l_name"] = $row['l_name'];
-                                        $_SESSION["email"] = $row['email'];
-                                        $_SESSION['phone'] = $row['phone'];
-                                        $_SESSION['dob'] = $row['dob'];
-										 header("refresh:1;url=index.php"); // redirect to index.php page
-	                            } 
-							else
-							    {
-                                      	$message = "Invalid Username or Password!"; // throw error
-                                }
-	 }
-	
-	
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    
+    if(!empty($_POST["submit"])) 
+    {
+        $loginquery ="SELECT * FROM admin WHERE username='$username' && password='".md5($password)."'";
+        $result=mysqli_query($db, $loginquery);
+        $row=mysqli_fetch_array($result);
+    
+        if(is_array($row))
+        {
+            $_SESSION["adm_id"] = $row['adm_id'];
+            header("refresh:1;url=dashboard.php");
+        } 
+        else
+        {
+            $message = "Invalid Username or Password!";
+        }
+    }
+}
+
+if(isset($_POST['submit1']))
+{
+    if(empty($_POST['cr_user']) ||
+       empty($_POST['cr_email']) || 
+       empty($_POST['cr_pass']) ||  
+       empty($_POST['cr_cpass']) ||
+       empty($_POST['code']))
+    {
+        $message = "ALL fields must be filled";
+    }
+    else
+    {
+        $check_username = mysqli_query($db, "SELECT username FROM admin where username = '".$_POST['cr_user']."' ");
+        $check_email = mysqli_query($db, "SELECT email FROM admin where email = '".$_POST['cr_email']."' ");
+        $check_code = mysqli_query($db, "SELECT adm_id FROM admin where code = '".$_POST['code']."' ");
+    
+        if($_POST['cr_pass'] != $_POST['cr_cpass']){
+            $message = "Password does not match!";
+        }
+        elseif (!filter_var($_POST['cr_email'], FILTER_VALIDATE_EMAIL)) 
+        {
+            $message = "Invalid email address, please enter a valid email!";
+        }
+        elseif(mysqli_num_rows($check_username) > 0)
+        {
+            $message = 'Username already exists!';
+        }
+        elseif(mysqli_num_rows($check_email) > 0)
+        {
+            $message = 'Email already exists!';
+        }
+        elseif(mysqli_num_rows($check_code) > 0)
+        {
+            $message = "Unique Code already redeemed!";
+        }
+        else
+        {
+            $result = mysqli_query($db,"SELECT id FROM admin_codes WHERE codes =  '".$_POST['code']."'"); 
+                      
+            if(mysqli_num_rows($result) == 0)
+            {
+                $message = "Invalid code!";
+            } 
+            else
+            {
+                $mql = "INSERT INTO admin (username,password,email,code) VALUES ('".$_POST['cr_user']."','".md5($_POST['cr_pass'])."','".$_POST['cr_email']."','".$_POST['code']."')";
+                mysqli_query($db, $mql);
+                $success = "Admin added successfully!";
+            }
+        }
+    }
 }
 ?>
 
-
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
-    <title> B.B | Login</title>
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <!-- <link href="css/animsition.min.css" rel="stylesheet"> -->
-    <link href="css/animate.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet"> </head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+  <title>221b | Admin Dashboard</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/login.css">
+  
+  <style>
+    /* Ensure the correct form is visible */
+    .register-form { display: none; }
+    .form.active .register-form { display: block; }
+    .form.active .login-form { display: none; }
+  </style>
+</head>
+
 <body>
-     <div class="site-wrapper animsition" data-animsition-in="fade-in" data-animsition-out="fade-out">
-         <!--header starts-->
-         <header id="header" class="header-scroll top-header headrom">
-            <!-- .navbar -->
-            <nav class="navbar navbar-dark">
-               <div class="container">
-                  <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#mainNavbarCollapse">&#9776;</button>
-                  <a class="navbar-brand" href="index.html"> <img class="img-rounded" src="images/221b-2.png" width="180" alt=""> </a>
-                  <div class="collapse navbar-toggleable-md  float-lg-right" id="mainNavbarCollapse">
-                     <ul class="nav navbar-nav">
-							<li class="nav-item"> <a class="nav-link active" href="index.php">Home <span class="sr-only"></span></a> </li>
-                            <li class="nav-item"> <a class="nav-link active" href="dishes.php?res_id=48">Menu<span class="sr-only"></span></a> </li>
-                            
-							<?php
-						if(empty($_SESSION["user_id"]))
-							{
-								echo '<li class="nav-item"><a href="login.php" class="nav-link active">Login</a><span class="sr-only">(current)</span></li>
-                              <li class="nav-item"><a href="registration.php" class="nav-link active">Signup</a> </li>';
-                              echo '<li class="nav-item"> <a class="nav-link active" href="about_us.php">About us<span class="sr-only"></span></a> </li>
-                              <li class="nav-item"> <a class="nav-link active" href="contact_us.php">Contact us<span class="sr-only"></span></a> </li>
-                                    <li class="nav-item"> <a class="nav-link active" href=faq.php>FAQ<span class="sr-only"></span></a> </li>';
-							}
-						else
-							{
-									
-									
-                                        echo  '<li class="nav-item"><a href="your_orders.php" class="nav-link active">Your Orders</a> </li>
-                                        <li class="nav-item"> <a class="nav-link active" href="user_profile.php">Profile<span class="sr-only"></span></a> </li>';
-                                        echo '<li class="nav-item"> <a class="nav-link active" href="about_us.php">About us<span class="sr-only"></span></a> </li>
-                              <li class="nav-item"> <a class="nav-link active" href="contact_us.php">Contact us<span class="sr-only"></span></a> </li>
-                                    <li class="nav-item"> <a class="nav-link active" href=faq.php>FAQ<span class="sr-only"></span></a> </li>';
-									echo  '<li class="nav-item"><a href="logout.php" class="nav-link active">logout</a> </li>';
-							}
 
-						?>
-							 
-                        </ul>
-                  </div>
-               </div>
-            </nav>
-            <!-- /.navbar -->
-         </header>
-         <div class="page-wrapper">
-            <div class="breadcrumb">
-               <div class="container">
-                  <ul>
-                     <li><a href="#" class="active">
-					  <span style="color:red;"><?php echo $message; ?></span>
-					   <span style="color:green;">
-								<?php echo $success; ?>
-										</span>
-					   
-					</a></li>
-                    
-                  </ul>
-               </div>
-            </div>
-            <section class="contact-page inner-page">
-            <div class="container">
-                    <h2>Login</h2>
-                    <!-- <p class="lead">The easiest way to your favourite food</p> -->
-                
-               <div class="container">
-                  <div class="row">
-                     <!-- REGISTER -->
-                     <div class="col-md-8">
-                        <div class="widget">
-                           <div class="widget-body">
-                           <div align="center">
-							  <form action="" method="post">
-                                 
-                                 <div class="row">
-								  <div class="form-group col-sm-6">
-                                       <input class="form-control" type="text" name="username" id="example-text-input" placeholder="UserName"> 
-                                    </div>
-                        </div>
-                        <div class="row">
-                                    <div class="form-group col-sm-6">
-                                       <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password"> 
-                                    </div>
-                                 </div>
-                                
-                                 <div class="row">
-                                    <div class="col-sm-4">
-                                       <p> <input type="submit" value="Login" name="submit" class="btn theme-btn"> </p>
-                                    </div>
-                                 </div>
-                              </form>
-                        </div>
-				    </div>
-                           <!-- end: Widget -->
-                </div>
-                        <!-- /REGISTER -->
-                     </div>
-                     <!-- WHY? -->
-                     <div class="col-md-4">
-                        <h4>Login yummy food is waiting for you!!</h4>
-                        <!-- <p>Once you're registered, you can:</p> -->
-                        <hr>
-                        <p></p>
-                        <h4 class="m-t-20">Forgot your password?</h4>
-                        <p> Reset your password by clicking below</p>
-                        <p> <a href="forgot_password.php" class="btn theme-btn m-t-15">Reset your password</a> </p>
-                     </div>
-                     <!-- /WHY? -->
-                  </div>
-               </div>
-            </section>
-            <!-- start: FOOTER -->
-        <footer class="footer">
-            <div class="container">
-                <!-- top footer statrs -->
-                <div class="row top-footer">
-                    <div class="col-xs-12 col-sm-3 footer-logo-block color-gray">
-                        <a href="#"> <img src="images/221b-2.png" width="180" alt="Footer logo"> </a> <span>Order Delivery &amp; Take-Out </span> </div>
-                    <div class="col-xs-12 col-sm-2 about color-gray">
-                        <h5>About Us</h5>
-                        <ul>
-                            <li><a href="about_us.php">About us</a> </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- top footer ends -->
-                <!-- bottom footer statrs -->
-                <div class="bottom-footer">
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-4 address color-gray">
-                            <h5>Address</h5>
-                            <p> Kathmandu Valley , Nepal  </p>
-                            <h5>Phone: <a href="tel:+080000012222"> 98******* </a></h5> </div> 
-                    </div>
-                </div>
-                <!-- bottom footer ends -->
-            </div>
-        </footer>
-        <!-- end:Footer -->
-         </div>
-         <!-- end:page wrapper -->
-      </div>
-      <!--/end:Site wrapper -->
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/tether.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/animsition.min.js"></script>
-    <script src="js/bootstrap-slider.min.js"></script>
-    <script src="js/jquery.isotope.min.js"></script>
-    <script src="js/headroom.js"></script>
-    <script src="js/foodpicky.min.js"></script>
+<div class="container">
+  <div class="info">
+    <h1>Administration </h1><span>Login or Create an Account</span>
+  </div>
+</div>
+
+<div class="form">
+  <div class="thumbnail"><img src="images/manager.png"/></div>
+  
+  <!-- Registration Form -->
+  <form class="register-form" action="index.php" method="post">
+    <input type="text" placeholder="Username" name="cr_user"/>
+    <input type="text" placeholder="Email Address"  name="cr_email"/>
+    <input type="password" placeholder="Password"  name="cr_pass"/>
+    <input type="password" placeholder="Confirm Password"  name="cr_cpass"/>
+    <input type="password" placeholder="Unique Code"  name="code"/>
+    <input type="submit" name="submit1" value="Create"/>
+    <p class="message">Already registered? <a href="#">Sign In</a></p>
+  </form>
+  
+  <!-- Login Form -->
+  <form class="login-form" action="index.php" method="post">
+    <input type="text" placeholder="Username" name="username"/>
+    <input type="password" placeholder="Password" name="password"/>
+    <input type="submit" name="submit" value="Login"/>
+    <p class="message">Not registered? <a href="#">Create an account</a></p>
+  </form>
+  
+  <!-- Display Messages -->
+  <span style="color:red;"><?php echo $message; ?></span>
+  <span style="color:green;"><?php echo $success; ?></span>
+</div>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('.message a').click(function(e) {
+      e.preventDefault();
+      $('.form').toggleClass('active');
+    });
+  });
+</script>
+
 </body>
-
 </html>

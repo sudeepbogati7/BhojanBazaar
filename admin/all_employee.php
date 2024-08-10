@@ -15,7 +15,7 @@ session_start();
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
-    <title>221b | Employee</title>
+    <title>BB | Employee</title>
     <!-- Bootstrap Core CSS -->
     <link href="css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -180,7 +180,7 @@ session_start();
                                             <tr>
 											 <th>First Name</th>
                                                 <th>Last Name</th>
-                                                <th>Aadhaar No</th>
+                                                <!-- <th>Aadhaar No</th> -->
                                                 <th>Address</th>
                                                 <th>Phone no</th>
                                                 <th>Type</th>
@@ -193,7 +193,7 @@ session_start();
                                             <tr>
                                             <th>First Name</th>
                                                 <th>Last Name</th>
-                                                <th>Aadhaar No</th>
+                                                <!-- <th>Aadhaar No</th> -->
                                                 <th>Address</th>
                                                 <th>Phone no</th>
                                                 <th>Type</th>
@@ -246,34 +246,11 @@ session_start();
 												
 											
 											?>
-                                            
-                                           
-                                 
-                                                        
-                                                            
-                                                           
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
 						 </div>
                       
                             </div>

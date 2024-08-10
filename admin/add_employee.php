@@ -73,13 +73,14 @@ if(isset($_POST['submit']))           //if upload btn is pressed
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
-    <title>221b | Add Employee</title>
+    <title> B.B | Add Employee</title>
     <!-- Bootstrap Core CSS -->
     <link href="css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="css/helper.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
+
 
 <body class="fix-header">
     <!-- Preloader - style you can find in spinners.css -->
@@ -96,7 +97,7 @@ if(isset($_POST['submit']))           //if upload btn is pressed
                 <div class="navbar-header">
                     <a class="navbar-brand" href="index.html">
                         <!-- Logo icon -->
-                        <b><img src="images/221b-2.png" width="180" alt="homepage" class="dark-logo" /></b>
+                        <b><img src="images/221b-2.png"  width="180" alt="homepage" class="dark-logo" /></b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <!-- <span><img src="images/logo-text.png" alt="homepage" class="dark-logo" /></span> -->
@@ -229,20 +230,20 @@ if(isset($_POST['submit']))           //if upload btn is pressed
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="control-label">Employee First Name</label>
-                                                    <input type="text" name="e_fname" class="form-control" placeholder="Samuel">
+                                                    <input type="text" name="e_fname" class="form-control" placeholder="Salman">
                                                    </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="control-label">Employee Last Name</label>
-                                                    <input type="text" name="e_lname" class="form-control" placeholder="Monteiro">
+                                                    <input type="text" name="e_lname" class="form-control" placeholder="Khan">
                                                    </div>
                                             </div>
                                             <!--/span-->
                                             <div class="col-md-6">
                                                 <div class="form-group has-danger">
-                                                    <label class="control-label">Employee Aadhaar Card No.</label>
-                                                    <input type="text" name="e_ac" class="form-control form-control-danger" placeholder="11XX-XXXX-XXXX">
+                                                    <label class="control-label">Employee Citizenship Number</label>
+                                                    <input type="text" name="e_ac" class="form-control form-control-danger" placeholder="xx-xx-xxxx-xxxx">
                                                     </div>
                                             </div>
                                             <!--/span-->
@@ -252,13 +253,13 @@ if(isset($_POST['submit']))           //if upload btn is pressed
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="control-label">Employee Address</label>
-                                                    <input type="text" name="e_add" class="form-control" placeholder="Street 101, Mumbai">
+                                                    <input type="text" name="e_add" class="form-control" placeholder="Lainchaur, kathmandu">
                                                    </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="control-label">Employee Phone no.</label>
-                                                    <input type="text" name="e_phone" class="form-control" placeholder="+91-85428XXXXX">
+                                                    <input type="text" name="e_phone" class="form-control" placeholder="9828XXXXX">
                                                    </div>
                                             </div>
                                             <div class="col-md-6">

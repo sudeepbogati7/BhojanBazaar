@@ -15,7 +15,7 @@ session_start();
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
-    <title>221b | Menu</title>
+    <title>BB | Menu</title>
     <!-- Bootstrap Core CSS -->
     <link href="css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -44,7 +44,7 @@ session_start();
                 <div class="navbar-header">
                     <a class="navbar-brand" href="index.html">
                         <!-- Logo icon -->
-                        <b><img src="images/221b-2.png" alt="homepage" class="dark-logo" /></b>
+                        <b><img src="images/221b-2.png" width="180" alt="homepage"  class="dark-logo" /></b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <!-- <span><img src="images/logo-text.png" alt="homepage" class="dark-logo" /></span> -->
@@ -221,7 +221,7 @@ session_start();
 																					
 																								<td>'.$rows['title'].'</td>
 																								<td>'.$rows['slogan'].'</td>
-																								<td>₹'.$rows['price'].'</td>
+																								<td>Rs.'.$rows['price'].'</td>
 																								
 																								
 																								<td><div class="col-md-3 col-lg-8 m-b-10">

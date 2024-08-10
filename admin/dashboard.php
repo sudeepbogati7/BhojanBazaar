@@ -20,7 +20,7 @@ else
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
-    <title>221b | Admin Dasboard</title>
+    <title>B.B np | Admin Dasboard</title>
     <!-- Bootstrap Core CSS -->
     <link href="css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -43,7 +43,7 @@ else
                 <div class="navbar-header">
                     <a class="navbar-brand" href="index.html">
                         <!-- Logo icon -->
-                        <b><img src="images/221b-2.png" alt="homepage" class="dark-logo" /></b>
+                        <b><img src="images/221b-2.png" width="180"  alt="homepage" class="dark-logo" /></b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <!-- <span><img src="images/221b-2.png" alt="homepage" class="dark-logo" /></span> -->
@@ -232,7 +232,7 @@ else
             </div>
             <!-- End Container fluid  -->
             <!-- footer -->
-            <footer class="footer"> © 2020 All rights reserved. </footer>
+            <footer class="footer"> © ASCOL-BIT 2024 All rights reserved.  </footer>
             <!-- End footer -->
         </div>
         <!-- End Page wrapper  -->
