@@ -84,26 +84,34 @@ session_start(); //start temp session until logout/browser closed
             <div class="container">
                 <div class="title  m-b-30">
                     <div class="text-2xl w-fit mx-auto flex items-center justify-center font-semibold "> Our <span class="text-orange-500">Team</span></div>
-                    <div class="w-full flex gap-24 mt-12 justify-center items-center text-center">
+                    <div class="w-full flex gap-16 mt-12 justify-center items-center text-center">
                         <div class="w-[200px] h-[400px] p-2 shadow-xl rounded-lg bg-gray-200 border-gray-300 border-2">
                             <div class="border border-orange-600 w h-fit  rounded-xl overflow-hidden "><img class="" src="images/anurag.jpg" width="200" alt="anurag-img"></div>
                             <div class="font-bold text-lg">Mr. Anurag Oli </div>
-                            <div class="text-sm ">Machine Learning Engineer  </div>
-                            <span> ICEBREAKR</span>
+                            <!-- <div class="text-sm ">Machine Learning Engineer  </div> -->
+                            <!-- <span> ICEBREAKR</span> -->
                             <div class="text-sm">Roll No. 2009/078 </div>
                         </div>
                         <div class="w-[200px] h-[400px] p-2 rounded-lg shadow-xl bg-gray-200 border-gray-300 border-2">
                             <div class="border border-gray-600 w h-fit shadow-xl  rounded-xl overflow-hidden "><img class="" src="images/sudeep.jpg" width="200" alt="anurag-img"></div>
                             <div class="font-bold text-lg">Mr. Sudeep Bogati </div>
-                            <div class="text-sm ">Software Engineer  </div>
-                            <span> Greentick Nepal </span>
+                            <!-- <div class="text-sm ">Software Engineer  </div> -->
+                            <!-- <span> Greentick Nepal </span> -->
                             <div class="text-sm">Roll No. 2006/078 </div>
                         </div>
                         <div class="w-[200px] h-[400px] p-2 rounded-lg shadow-xl bg-gray-200 border-gray-300 border-2">
                             <div class="border border-gray-600 w h-fit  rounded-xl overflow-hidden "><img class="" src="images/binod.jpg" width="200" alt="anurag-img"></div>
                             <div class="font-bold text-lg">Mr.Binod Rawat </div>
-                            <div class="text-sm "> Cyber Security Practitioner  </div>
+                            <!-- <div class="text-sm "> Cyber Security Practitioner  </div> -->
                             <div class="text-sm">Roll No. 200*/078 </div>
+                        </div>
+                        <div class="w-[200px] h-[400px] p-2 flex flex-col gap-16 rounded-lg shadow-xl bg-gray-200 border-gray-300 border-2">
+                            <div class="border border-gray-600 w h-fit  rounded-xl overflow-hidden "><img class="" src="images/sid.jpg" width="200" alt="anurag-img"></div>
+                           <div>
+                           <div class="font-bold text-lg">Mr.Binod Rawat </div>
+                            <!-- <div class="text-sm "> Cyber Security Practitioner  </div> -->
+                            <div class="text-sm">Roll No. 200*/078 </div>
+                           </div>
                         </div>
                     </div>
                     
